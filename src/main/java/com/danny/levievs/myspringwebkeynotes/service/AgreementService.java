@@ -5,6 +5,8 @@ import com.danny.levievs.myspringwebkeynotes.repository.AgreementsRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 @RequiredArgsConstructor
@@ -12,7 +14,7 @@ public class AgreementService {
 
     private final AgreementsRepository agreementsRepository;
 
-    public Agreement getAgreementById(Long id){
-        return agreementsRepository.findById(id).orElse(null);
+    public List<Agreement> getAgreementsByOwnerId(Long ownerId){
+        return agreementsRepository.getAgreementsByOwnerId(ownerId);
     }
 }

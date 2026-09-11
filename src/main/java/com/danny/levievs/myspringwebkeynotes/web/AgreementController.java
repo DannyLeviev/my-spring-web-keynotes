@@ -7,6 +7,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Slf4j
 @RestController
 @RequiredArgsConstructor
@@ -16,9 +18,10 @@ public class AgreementController {
 
     private final AgreementService agreementService;
 
-    @GetMapping("/{id}")
-        public ResponseEntity<Agreement> getAgreementById(@PathVariable Long id){
-            return ResponseEntity.ok(agreementService.getAgreementById(id));
+    @GetMapping("owner/{id}")
+        public ResponseEntity<List<Agreement>> getAgreementsByOwnerId(@PathVariable Long id){
+            log.debug("Begining proccessing the getAgreementsByOwnerId for ownerId={}", id);
+            return ResponseEntity.ok(agreementService.getAgreementsByOwnerId(id));
     }
 
 }
