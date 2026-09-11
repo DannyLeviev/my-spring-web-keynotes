@@ -4,3 +4,7 @@ server:
 spring:
   application:
     name: my-spring-web-keynotes
+
+application:
+  customers:
+    base_url: "http://localhost:8083/customers"
