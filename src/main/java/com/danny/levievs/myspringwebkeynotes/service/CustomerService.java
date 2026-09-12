@@ -1,5 +1,6 @@
 package com.danny.levievs.myspringwebkeynotes.service;
 
+import com.danny.levievs.myspringwebkeynotes.exceptions.ResourceNotFoundException;
 import com.danny.levievs.myspringwebkeynotes.model.CustomerAndAddressDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -20,7 +21,7 @@ public class CustomerService {
 
     public CustomerAndAddressDto getAgreementOwner(Long agreementId) {
         Long customerId = agreementService.getAgreementOwnerByAgreementId(agreementId)
-                .orElseThrow(() -> new IllegalArgumentException("No agreements found with id = " + agreementId));
+                .orElseThrow(() -> new ResourceNotFoundException("No agreements found with id = " + agreementId));
         return getCustomerById(customerId);
     }
 
